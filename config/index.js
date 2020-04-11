@@ -1,8 +1,11 @@
+const path = require('path');
+
 const config = {
-  projectName: 'weather-report',
+  projectName: 'weather-forecast',
   date: '2020-4-10',
-  designWidth: 750,
+  designWidth: 375,
   deviceRatio: {
+    '375': 1 / 2,
     '640': 2.34 / 2,
     '750': 1,
     '828': 1.81 / 2,
@@ -24,6 +27,9 @@ const config = {
     },
   },
   defineConstants: {},
+  alias: {
+    '@src': path.resolve(__dirname, '..', 'src'),
+  },
   weapp: {
     module: {
       postcss: {

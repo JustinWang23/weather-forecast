@@ -1,6 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import Index from './pages/index'
+import Index from '@src/pages/index'
 
+import '@src/styles/reset.scss';
 import './app.scss'
 
 class App extends Component {

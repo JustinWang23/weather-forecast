@@ -1,0 +1,21 @@
+.temp-card-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 14px;
+
+  background-color: royalblue;
+  color: white;
+
+  border-bottom: 1px solid white;
+}
+
+.temp-card-location {
+  font-size: 22px;
+}
+
+.temp-card-temperature {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
