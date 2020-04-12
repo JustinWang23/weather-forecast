@@ -1,7 +1,13 @@
-.add-btn {
+.add-area-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 20px 0;
+}
+
+.add-btn {
+  padding: 6px;
+  background-color: lightblue;
+  color: white;
 }
