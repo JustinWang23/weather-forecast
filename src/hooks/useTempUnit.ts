@@ -1,8 +1,8 @@
 import { useState } from '@tarojs/taro';
 
-type TempUnitType = 'C' | 'F';
+import { TempUnitType } from '@src/types';
 
-export const useTempUnit = (unit: TempUnitType = 'C') => {
+export const useTempUnit = (unit: TempUnitType = TempUnitType.C) => {
   const [tempUnit, setTempUnit] = useState<TempUnitType>(unit);
 
   return { tempUnit, setTempUnit };

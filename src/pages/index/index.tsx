@@ -46,6 +46,10 @@ const Index = () => {
     });
   };
 
+  const onTempCardClick = (city: string) => {
+    Taro.navigateTo({ url: `/pages/forecast-detail/index?city=${city}&unit=${tempUnit}` });
+  };
+
   const onTempUnitChange = (v: TempUnitType) => {
     setTempUnit(v);
   };
@@ -54,11 +58,19 @@ const Index = () => {
     <Block>
       <Header title='Weather Forecast' />
       {cityWeatherList.map((weather) => (
-        <TempCard key={weather.id} location={weather.name} temperature={Math.round(weather.temp)} tempUnit={tempUnit} />
+        <TempCard
+          key={weather.id}
+          text={weather.name}
+          temperature={Math.round(weather.temp)}
+          tempUnit={tempUnit}
+          onClick={onTempCardClick}
+        />
       ))}
       <View className='add-area-wrap'>
         <Input placeholder='Search City' value={searchCity} onInput={onCityInput}></Input>
-        <View className='add-btn' onClick={onAddWeather}>Add</View>
+        <View className='add-btn' onClick={onAddWeather}>
+          Add
+        </View>
       </View>
       <Footer tempUnit={tempUnit} onTempUnitChange={onTempUnitChange} />
     </Block>

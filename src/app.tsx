@@ -7,7 +7,8 @@ import './app.scss'
 class App extends Component {
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/forecast-detail/index'
     ],
     window: {
       backgroundTextStyle: 'light',

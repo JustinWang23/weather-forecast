@@ -7,16 +7,23 @@ import { convertTemp } from '@src/utils';
 import './tempCard.scss';
 
 interface TempCardProps {
-  location: string;
+  text: string;
   temperature: number;
   tempUnit: TempUnitType;
+  onClick?: (e: string) => any;
 }
 
-const TempCard = ({ location, temperature, tempUnit }: TempCardProps) => (
-  <View className='temp-card-wrap'>
-    <View className='temp-card-location'>{location}</View>
-    <View className='temp-card-temperature'>{convertTemp(temperature, tempUnit)}°</View>
-  </View>
-);
+const TempCard = ({ text, temperature, tempUnit, onClick }: TempCardProps) => {
+  const onCardClick = () => {
+    onClick && onClick(text);
+  };
+
+  return (
+    <View className='temp-card-wrap' onClick={onCardClick}>
+      <View className='temp-card-text'>{text}</View>
+      <View className='temp-card-temperature'>{convertTemp(temperature, tempUnit)}°</View>
+    </View>
+  );
+};
 
 export default Taro.memo(TempCard);
