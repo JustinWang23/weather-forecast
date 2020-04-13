@@ -2,7 +2,7 @@ import Taro, { useEffect, useState } from '@tarojs/taro';
 import { Block, View, Input } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 
-import { Header, Footer, TempCard } from '@src/components';
+import { Header, Footer, WeatherCard } from '@src/components';
 import { OPEN_WEATHER_API_KEY } from '@src/configs';
 import { TempUnitType } from '@src/types';
 
@@ -11,7 +11,9 @@ import './index.scss';
 const Index = () => {
   const [tempUnit, setTempUnit] = useState<TempUnitType>(TempUnitType.C);
   const [searchCity, setSearchCity] = useState<string>('');
-  const [cityWeatherList, setCityWeatherList] = useState<{ id: number; name: string; temp: number }[]>([]);
+  const [cityWeatherList, setCityWeatherList] = useState<{ id: number; name: string; temp: number; weather: string }[]>(
+    []
+  );
 
   useEffect(() => {
     getCurrentWeather('Shanghai');
@@ -26,9 +28,10 @@ const Index = () => {
         id,
         name,
         main: { temp },
+        weather: [weatherDescp],
       } = res.data;
 
-      setCityWeatherList([...cityWeatherList, { id, name, temp }]);
+      setCityWeatherList([...cityWeatherList, { id, name, temp, weather: weatherDescp.main }]);
     });
 
   const onCityInput = (e: BaseEventOrig<any>) => {
@@ -58,9 +61,10 @@ const Index = () => {
     <Block>
       <Header title='Weather Forecast' />
       {cityWeatherList.map((weather) => (
-        <TempCard
+        <WeatherCard
           key={weather.id}
           text={weather.name}
+          weather={weather.weather}
           temperature={Math.round(weather.temp)}
           tempUnit={tempUnit}
           onClick={onTempCardClick}

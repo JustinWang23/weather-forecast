@@ -1,7 +1,7 @@
 import Taro, { useRouter, useEffect, useState } from '@tarojs/taro';
-import { View, Block } from '@tarojs/components';
+import { Block } from '@tarojs/components';
 
-import { TempCard } from '@src/components';
+import { WeatherCard, Header } from '@src/components';
 import { OPEN_WEATHER_API_KEY } from '@src/configs';
 import { TempUnitType } from '@src/types';
 
@@ -21,11 +21,12 @@ const ForecastDetail = () => {
 
   return (
     <Block>
-      <View>{city}</View>
+      <Header title={city} />
       {weatherList.map((weather) => (
-        <TempCard
+        <WeatherCard
           key={weather.dt}
           text={weather.dt_txt}
+          weather={weather.weather[0].main}
           temperature={Math.round(weather.main.temp)}
           tempUnit={unit as TempUnitType}
         />

@@ -1,4 +1,4 @@
-.temp-card-wrap {
+.weather-card-wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,11 +11,19 @@
   border-bottom: 1px solid white;
 }
 
-.temp-card-text {
+.weather-card-left-wrap {
+  flex-direction: column;
+}
+
+.weather-card-text {
   font-size: 22px;
 }
 
-.temp-card-temperature {
+.weather-card-weather {
+  font-size: 14px;
+}
+
+.weather-card-temperature {
   font-size: 28px;
   letter-spacing: 1px;
 }
