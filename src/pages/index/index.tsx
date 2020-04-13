@@ -76,6 +76,7 @@ const Index = () => {
           Add
         </View>
       </View>
+      <View className='hint'>Click the city to see 5 days forecast</View>
       <Footer tempUnit={tempUnit} onTempUnitChange={onTempUnitChange} />
     </Block>
   );
