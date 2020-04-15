@@ -1,4 +1,4 @@
-import Taro, { useEffect, useState } from '@tarojs/taro';
+import Taro, { useEffect, useState, useCallback } from '@tarojs/taro';
 import { Block, View, Input } from '@tarojs/components';
 import { BaseEventOrig } from '@tarojs/components/types/common';
 
@@ -49,13 +49,9 @@ const Index = () => {
     });
   };
 
-  const onTempCardClick = (city: string) => {
+  const onTempCardClick = useCallback((city: string) => {
     Taro.navigateTo({ url: `/pages/forecast-detail/index?city=${city}&unit=${tempUnit}` });
-  };
-
-  const onTempUnitChange = (v: TempUnitType) => {
-    setTempUnit(v);
-  };
+  }, [tempUnit]);
 
   return (
     <Block>
@@ -77,7 +73,7 @@ const Index = () => {
         </View>
       </View>
       <View className='hint'>Click the city to see 5 days forecast</View>
-      <Footer tempUnit={tempUnit} onTempUnitChange={onTempUnitChange} />
+      <Footer tempUnit={tempUnit} onTempUnitChange={setTempUnit} />
     </Block>
   );
 };
