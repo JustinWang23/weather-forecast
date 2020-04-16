@@ -21,4 +21,5 @@ Run the application and import project from WeChat Devtools
 - extract request method
 - extract Add btn & hint to component
 - add component test
+- add response type
 - show more info in weather forecast detail page (like wind, pressure, humidity)
